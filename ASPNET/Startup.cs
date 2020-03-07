@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Data;
-using Mysql.Data.MysqlClient;
+using MySql.Data.MySqlClient;
 
 namespace ASPNET
 {
@@ -27,12 +27,12 @@ namespace ASPNET
         {
             services.AddScoped<IDbConnection>((s) =>
             {
-                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("Best Buy"));
+                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("bestbuy"));
                 conn.Open();
                 return conn;
             });
 
-            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductRepository, Repository>();
             
             services.AddControllersWithViews();
         }

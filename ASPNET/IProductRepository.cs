@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ASPNET.Models;
+using System.Data;
 
 namespace ASPNET
 {
     public interface IProductRepository
     {
         public IEnumerable<Product> GetAllProducts();
-        public product GetProduct(int id);
+        public Product GetProduct(int id);
     }
 }

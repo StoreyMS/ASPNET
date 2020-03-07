@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
+using System.Data;
+using ASPNET.Models;
 
 namespace ASPNET
 {
     public class Repository : IProductRepository
     {
         private readonly IDbConnection _conn;
-        public ProductRepository(IDbConnection conn)
+        public Repository(IDbConnection conn)
         {
             _conn = conn;
         }
@@ -18,18 +20,13 @@ namespace ASPNET
             return _conn.Query<Product>("Select * FROM products;");
         }
 
-        public IProductRepository GetProduct(int id)
+        public Product GetProduct(int id)
         {
             return _conn.QuerySingle<Product>("SELECT * FROM products WHERE ProductID = @id",
                new { id = id });
         }
 
-        public IActionResult ViewProduct(int id)
-        {
-            var product = Repository.GetProduct(id);
-
-            return View(product);
-        }
+       
             
     }
 }
