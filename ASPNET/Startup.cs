@@ -32,7 +32,7 @@ namespace ASPNET
                 return conn;
             });
 
-            services.AddTransient<IProductRepository, Repository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
             
             services.AddControllersWithViews();
         }
